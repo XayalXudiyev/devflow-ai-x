@@ -1,0 +1,114 @@
+{
+  "name": "devflow-ai-x",
+  "displayName": "DevFlow AI X",
+  "description": "Complete workflow from GitHub Issue to PR — with AI wizard (AI-powered)",
+  "version": "0.3.3",
+  "publisher": "xayalxudiyev",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "icon": "images/icon.png",
+  "contributes": {
+    "commands": [
+      {
+        "command": "devflow-ai-x.start",
+        "title": "DevFlow AI X: Start Task",
+        "icon": "$(rocket)"
+      },
+      {
+        "command": "devflow-ai-x.finish",
+        "title": "DevFlow AI X: Finish & Create PR",
+        "icon": "$(git-pull-request)"
+      },
+      {
+        "command": "devflow-ai-x.status",
+        "title": "DevFlow AI X: Show Status"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "devflow-ai-x.start",
+          "group": "navigation"
+        }
+      ],
+      "scm/title": [
+        {
+          "command": "devflow-ai-x.finish",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "devflow-ai-x.start",
+        "key": "ctrl+shift+d s",
+        "mac": "cmd+shift+d s"
+      },
+      {
+        "command": "devflow-ai-x.finish",
+        "key": "ctrl+shift+d f",
+        "mac": "cmd+shift+d f"
+      }
+    ],
+    "configuration": {
+      "title": "DevFlow AI X",
+      "properties": {
+        "devflow-ai-x.anthropicApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Anthropic API key (for AI features). If left empty, a simple template will be used.",
+          "scope": "application"
+        },
+        "devflow-ai-x.defaultBranch": {
+          "type": "string",
+          "default": "main",
+          "description": "Default main branch name (main, master, develop...)"
+        },
+        "devflow-ai-x.branchPrefix": {
+          "type": "string",
+          "default": "feature",
+          "enum": [
+            "feature",
+            "feat",
+            "bugfix",
+            "fix"
+          ],
+          "description": "Branch name prefix"
+        },
+        "devflow-ai-x.autoAssign": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically assign the issue to yourself"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "node esbuild.config.mjs",
+    "esbuild": "node esbuild.config.mjs",
+    "watch": "tsc -watch -p ./",
+    "package": "npm vsce package",
+    "publish": "npm vsce publish",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vscode/vsce": "^2.22.0",
+    "esbuild": "^0.27.4",
+    "eslint": "^8.0.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "@octokit/rest": "^20.0.2",
+    "simple-git": "^3.22.0"
+  }
+}

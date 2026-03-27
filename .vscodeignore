@@ -1,0 +1,9 @@
+.vscode/
+.vscode-test/
+src/
+**/*.ts
+**/*.map
+.gitignore
+esbuild.config.mjs
+README.md
+CHANGELOG.md
