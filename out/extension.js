@@ -106,7 +106,7 @@ function getFallbackSuggestions(prompt) {
 }
 async function runStartWizard(context) {
   const prompt = await vscode.window.showInputBox({
-    title: "DevFlow \u2014 Step 1/4: Task description",
+    title: "DevFlow \u2014 Step 1/8: Task description",
     prompt: "What do you want to work on?",
     placeHolder: "e.g. Fix validation error on login form",
     ignoreFocusOut: true,
@@ -135,7 +135,7 @@ async function runStartWizard(context) {
     { label: "$(edit) Write my own...", description: "Custom title" }
   ];
   const titlePick = await vscode.window.showQuickPick(titleItems, {
-    title: "DevFlow \u2014 Step 2/4: Issue title",
+    title: "DevFlow \u2014 Step 2/8: Issue title",
     placeHolder: "Select a title for the issue",
     ignoreFocusOut: true
   });
@@ -163,7 +163,7 @@ async function runStartWizard(context) {
     typeItems.unshift(recommended);
   }
   const typePick = await vscode.window.showQuickPick(typeItems, {
-    title: "DevFlow \u2014 Step 3/4: Task type",
+    title: "DevFlow \u2014 Step 3/8: Task type",
     placeHolder: "Select the type of task",
     ignoreFocusOut: true
   });
@@ -181,7 +181,7 @@ async function runStartWizard(context) {
     { label: "$(circle-outline) Low", description: "When time allows" }
   ];
   const priorityPick = await vscode.window.showQuickPick(priorityItems, {
-    title: "DevFlow \u2014 Step 4/4: Priority",
+    title: "DevFlow \u2014 Step 4/8: Priority",
     placeHolder: "Select task priority",
     ignoreFocusOut: true
   });
@@ -196,7 +196,7 @@ async function runStartWizard(context) {
     { label: "XL", description: "Extra Large" }
   ], {
     title: "DevFlow \u2014 Step 5/8: Size",
-    placeHolder: "Select size",
+    placeHolder: "Select size (XS, S, M, L, XL)",
     ignoreFocusOut: true
   });
   if (!sizePick) return null;
@@ -208,8 +208,8 @@ async function runStartWizard(context) {
     { label: "P4" },
     { label: "P5", description: "Lowest priority" }
   ], {
-    title: "DevFlow \u2014 Step 6/8: Priority (P1-P5)",
-    placeHolder: "Select priority",
+    title: "DevFlow \u2014 Step 6/8: P-level (P1\u2013P5)",
+    placeHolder: "Select P-level (P1\u2013P5)",
     ignoreFocusOut: true
   });
   if (!ghPriorityPick) return null;
@@ -223,7 +223,7 @@ async function runStartWizard(context) {
     { label: "Done", description: "Completed" }
   ], {
     title: "DevFlow \u2014 Step 7/8: Status",
-    placeHolder: "Select status",
+    placeHolder: "Select status (Todo, Blocked, In progress, In review, Changes Requested, Done)",
     ignoreFocusOut: true
   });
   if (!statusPick) return null;
@@ -236,7 +236,7 @@ async function runStartWizard(context) {
     { label: "Task", description: "A specific piece of work" }
   ], {
     title: "DevFlow \u2014 Step 8/8: Issue Type",
-    placeHolder: "Select issue type",
+    placeHolder: "Select issue type (Bug, Epic, Improvement, New Feature, Task)",
     ignoreFocusOut: true
   });
   if (!issueTypePick) return null;

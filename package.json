@@ -2,7 +2,7 @@
   "name": "devflow-ai-x",
   "displayName": "DevFlow AI X",
   "description": "Complete workflow from GitHub Issue to PR — with AI wizard (AI-powered)",
-  "version": "0.3.3",
+  "version": "0.4.1",
   "publisher": "xayalxudiyev",
   "engines": {
     "vscode": "^1.85.0"
